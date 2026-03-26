@@ -1,4 +1,4 @@
-const apiKey = '07be6922489345deb48d8d45c5ab98ee';
+const apiKey = 'aa3a9619af6b7bbc7d7de265173fa642';
 
 const blogContainer = document.getElementById('blog-container');
 const searchInput = document.getElementById('search-input');
@@ -6,7 +6,7 @@ const searchButton = document.getElementById('search-button');
 
 async function fetchRandomNews(){
     try{
-        const url = `https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=${apiKey}`;
+        const url = `https://gnews.io/api/v4/top-headlines?category=general&lang=en&apikey=${apiKey}`;
         const response = await fetch(url);
         const data = await response.json();
         console.log(data);
@@ -19,7 +19,7 @@ async function fetchRandomNews(){
 
 async function fetchNewQuery(query){
     try{
-        const url = `https://newsapi.org/v2/everything?q=${query}&pageSize=12&apiKey=${apiKey}`;
+        const url = `https://gnews.io/api/v4/search?q=${query}&lang=en&apikey=${apiKey}`;
         const response = await fetch(url);
         const data = await response.json();
         return data.articles;
@@ -44,7 +44,7 @@ function displayBlogs(articles){
         const blogCard = document.createElement('div');
         blogCard.classList.add('blog-card');
         const img = document.createElement('img');
-        img.src = article.urlToImage || 'placeholder.jpg';
+        img.src = article.image || 'placeholder.jpg';
         img.alt = article.title;
         const title = document.createElement('h2');
         title.innerText = article.title.length > 40 ? article.title.substring(0, 40) + '...' : article.title;
