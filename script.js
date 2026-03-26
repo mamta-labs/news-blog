@@ -6,7 +6,7 @@ const searchButton = document.getElementById('search-button');
 
 async function fetchRandomNews(){
     try{
-        const url = `https://gnews.io/api/v4/top-headlines?category=general&lang=en&apikey=${apiKey}`;
+        const url = `/.netlify/news?category=general`;
         const response = await fetch(url);
         const data = await response.json();
         console.log(data);
@@ -19,7 +19,7 @@ async function fetchRandomNews(){
 
 async function fetchNewQuery(query){
     try{
-        const url = `https://gnews.io/api/v4/search?q=${query}&lang=en&apikey=${apiKey}`;
+        const url = `/.netlify/news?query=${query}`;
         const response = await fetch(url);
         const data = await response.json();
         return data.articles;
